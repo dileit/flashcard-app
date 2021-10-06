@@ -14,6 +14,7 @@ function CardFormat({ front, back, handleChange, handleSubmit }) {
 						name="front"
 						className="form-control"
 						rows="3"
+						placeholder="Front of card"
 						value={front}
 						onChange={handleChange}
 					></textarea>
@@ -25,6 +26,7 @@ function CardFormat({ front, back, handleChange, handleSubmit }) {
 						name="back"
 						className="form-control"
 						rows="3"
+						placeholder="Back of card"
 						value={back}
 						onChange={handleChange}
 					></textarea>
@@ -32,7 +34,7 @@ function CardFormat({ front, back, handleChange, handleSubmit }) {
 				<button
 					type="button"
 					className="btn btn-secondary"
-					onClick={() => history.push("/")}
+					onClick={() => history.go("-1")}
 				>
 					Done
 				</button>

@@ -6,7 +6,7 @@ function DeckViewList({ key, card }) {
 	const { deckId } = useParams();
 	const history = useHistory();
 
-	async function deleteCardHandler(card) {
+	async function deleteCardHandler(card, e) {
 		const result = window.confirm(
 			`Delete this card? You will lose it forever.`
 		);
@@ -15,7 +15,8 @@ function DeckViewList({ key, card }) {
 			const abortController = new AbortController();
 
 			try {
-				history.go(0);
+				e.preventDefault();
+				history.go(`/decks/${deckId}`);
 				return await deleteCard(card.id, abortController.signal);
 			} catch (error) {
 				console.error("Something went wrong", error);
@@ -41,7 +42,7 @@ function DeckViewList({ key, card }) {
 				</Link>
 				<button
 					className="btn btn-danger"
-					onClick={() => deleteCardHandler(card)}
+					onClick={(e) => deleteCardHandler(card, e)}
 				>
 					Delete
 				</button>

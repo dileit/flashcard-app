@@ -6,8 +6,8 @@ import CardFormat from "./CardFormat";
 
 function AddCard() {
 	const initialCardState = {
-		front: "Front side of card",
-		back: "Back side of card",
+		front: "",
+		back: "",
 	};
 	const [deck, setDeck] = useState({});
 	const [cardState, setCardState] = useState({ ...initialCardState });

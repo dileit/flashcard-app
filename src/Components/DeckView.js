@@ -19,12 +19,13 @@ function DeckView() {
 		return () => abortController.abort();
 	}, [deckId]);
 
-	async function deleteDeckHandler(deck) {
+	async function deleteDeckHandler(deck, e) {
 		if (
 			window.confirm(`Delete this deck? You will not be able to recover it`)
 		) {
 			const abortController = new AbortController();
 			try {
+				e.preventDefault();
 				history.push("/");
 				return await deleteDeck(deck.id, abortController.signal);
 			} catch (error) {
@@ -80,7 +81,7 @@ function DeckView() {
 				<button
 					type="button"
 					className="btn btn-danger"
-					onClick={() => deleteDeckHandler(deck)}
+					onClick={(e) => deleteDeckHandler(deck, e)}
 				>
 					Delete
 				</button>

@@ -5,7 +5,7 @@ import { deleteDeck } from "../utils/api/index";
 function DeckTitle({ deck }) {
 	const history = useHistory();
 
-	const deleteHandler = async (deck) => {
+	const deleteHandler = async (deck, e) => {
 		const result = window.confirm(
 			`Delete this deck? You will not be able to recover it.`
 		);
@@ -14,7 +14,8 @@ function DeckTitle({ deck }) {
 			const abortController = new AbortController();
 
 			try {
-				history.go("0");
+				e.preventDefault();
+				history.go("/");
 				return await deleteDeck(deck.id, abortController.signal);
 			} catch (error) {
 				console.error("Something went wrong", error);
@@ -42,7 +43,7 @@ function DeckTitle({ deck }) {
 				<button
 					type="button"
 					className="btn btn-danger"
-					onClick={() => deleteHandler(deck)}
+					onClick={(e) => deleteHandler(deck, e)}
 				>
 					Delete
 				</button>

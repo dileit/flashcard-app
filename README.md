@@ -1,6 +1,8 @@
 # Flashcard-App
 Flashcard Application!
 
+- Can only be run locally. There is no backend set up for this!
+
 ## Features
 This flashcard application will allow you to view the decks of flashcards that you have made.
 You can:
